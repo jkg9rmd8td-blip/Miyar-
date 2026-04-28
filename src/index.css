@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Arabic", "Noto Sans Arabic", "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Locked Brand Constants */
+  --color-primary: #003366;
+  --color-secondary: #008080;
+  --color-tertiary: #4A5568;
+  --color-neutral: #F7FAFC;
+  
+  /* Layout Colors derived from Neutral */
+  --color-bg: #F7FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #EDF2F7;
+  --color-border: #E2E8F0;
+  
+  /* Text Colors */
+  --color-text-primary: #1A202C;
+  --color-text-secondary: #4A5568;
+  --color-text-muted: #718096;
+
+  /* Semantic Colors (Standardized) */
+  --color-success: #008080; /* Using Secondary as success/highlight */
+  --color-warning: #ECC94B;
+  --color-danger: #E53E3E;
+  --color-accent: #003366; /* Using Primary as accent */
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-soft: 0 1px 2px rgba(0,0,0,0.05);
+
+  /* Spacing Tokens */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Layout */
+  --max-width-content: 1440px;
+}
+
+@layer base {
+  html {
+    direction: rtl;
+    background-color: var(--color-bg);
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    @apply text-text-primary font-sans antialiased text-[14px] leading-normal;
+  }
+
+  h1 { @apply text-[28px] font-bold tracking-tight mb-6 text-primary; }
+  h2 { @apply text-[22px] font-bold tracking-tight mb-4 text-primary; }
+  h3 { @apply text-[18px] font-semibold tracking-tight mb-3 text-primary; }
+  p  { @apply text-[14px] leading-relaxed mb-4 text-text-secondary; }
+}
+
+@layer components {
+  .max-w-content {
+    max-width: var(--max-width-content);
+  }
+
+  /* Card System - Locked to Reference UI */
+  .card-l1 {
+    @apply bg-surface border border-border rounded-[8px] p-[24px] shadow-card;
+  }
+
+  .card-l2 {
+    @apply bg-surface border border-border rounded-[6px] p-[16px];
+  }
+
+  .card-l3 {
+    @apply bg-surface-soft border border-border rounded-[4px] p-[12px];
+  }
+
+  /* Button System - Locked to Reference UI */
+  .btn {
+    @apply rounded-[4px] px-[16px] py-[8px] font-bold transition-colors flex items-center justify-center gap-2 text-[12px] uppercase tracking-wider;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+
+  .btn-ghost {
+    @apply text-text-secondary hover:bg-neutral border border-transparent;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white hover:bg-danger/90;
+  }
+
+  /* Badges */
+  .badge-success { @apply bg-secondary/10 text-secondary border border-secondary/20; }
+  .badge-warning { @apply bg-warning/10 text-warning border border-warning/20; }
+  .badge-danger  { @apply bg-danger/10 text-danger border border-danger/20; }
+}
